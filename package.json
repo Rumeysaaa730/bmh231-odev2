@@ -1,0 +1,8 @@
+   {
+     "name": "bmh231-odev2",
+     "version": "1.0.0",
+     "description": "Kampus Etkinlik Panosu",
+     "scripts": {
+       "start": "node sunucu.js"
+     }
+   }
