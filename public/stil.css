@@ -1,0 +1,162 @@
+/* 1) CSS degiskenleri */
+:root {
+  --en-koyu: #2f4a33;
+  --ana-renk: #4f7c55;
+  --vurgu-renk: #8fb996;
+  --acik-renk: #cfe3cf;
+  --arka-plan: #f4f8f2;
+  --kart-arka: #ffffff;
+  --bosluk: 16px;
+}
+
+/* 2) Tum ogeler icin border-box */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--arka-plan);
+  color: var(--en-koyu);
+}
+
+/* 3) Ust bant: Flexbox */
+.ust-bant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--bosluk);
+  background: var(--ana-renk);
+  color: white;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.ust-bant nav ul {
+  display: flex;
+  gap: var(--bosluk);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ust-bant nav a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--bosluk);
+}
+
+/* 4) Filtre dugmeleri ve arama: Flexbox */
+.arac-cubugu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--bosluk);
+  margin-bottom: var(--bosluk);
+}
+
+.filtreler {
+  display: flex;
+  gap: 8px;
+}
+
+.filtre {
+  padding: 8px 14px;
+  border: 2px solid var(--ana-renk);
+  border-radius: 20px;
+  background: white;
+  color: var(--ana-renk);
+  cursor: pointer;
+}
+
+.filtre.secili {
+  background: var(--ana-renk);
+  color: white;
+}
+
+#arama {
+  padding: 8px;
+  border: 1px solid var(--vurgu-renk);
+  border-radius: 6px;
+}
+
+/* 5) Etkinlik kartlari: Grid */
+.kartlar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--bosluk);
+}
+
+.kart {
+  background: var(--kart-arka);
+  padding: var(--bosluk);
+  border-radius: 10px;
+  border-top: 4px solid var(--vurgu-renk);
+  box-shadow: 0 2px 6px rgba(47, 74, 51, 0.15);
+}
+
+.kart h3 {
+  margin-top: 0;
+  color: var(--ana-renk);
+}
+
+.etiket {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: var(--acik-renk);
+  color: var(--en-koyu);
+  font-size: 0.85rem;
+}
+
+/* 6) Form */
+#oneri-formu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+}
+
+#oneri-formu input {
+  padding: 8px;
+  border: 1px solid var(--vurgu-renk);
+  border-radius: 6px;
+}
+
+#oneri-formu button {
+  padding: 10px;
+  background: var(--ana-renk);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hata {
+  color: #b03a2e;
+}
+
+.basarili {
+  color: var(--ana-renk);
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: var(--bosluk);
+  background: var(--en-koyu);
+  color: white;
+  margin-top: 32px;
+}
