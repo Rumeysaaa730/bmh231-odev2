@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "baslik": "Git ve GitHub Atolyesi",
+    "tur": "atolye",
+    "tarih": "2026-11-12",
+    "yer": "Muhendislik Fakultesi Lab-2",
+    "kontenjan": 30
+  },
+  {
+    "id": 2,
+    "baslik": "Web Programlama Atolyesi",
+    "tur": "atolye",
+    "tarih": "2026-11-14",
+    "yer": "Muhendislik Fakultesi Lab-1",
+    "kontenjan": 25
+  },
+  {
+    "id": 3,
+    "baslik": "Yapay Zeka Soylesisi",
+    "tur": "soylesi",
+    "tarih": "2026-11-18",
+    "yer": "Konferans Salonu",
+    "kontenjan": 200
+  },
+  {
+    "id": 4,
+    "baslik": "Yazilim Kariyeri Soylesisi",
+    "tur": "soylesi",
+    "tarih": "2026-11-21",
+    "yer": "Rektorluk Konferans Salonu",
+    "kontenjan": 150
+  },
+  {
+    "id": 5,
+    "baslik": "Fotografcilik Toplulugu Tanisma Gunu",
+    "tur": "topluluk",
+    "tarih": "2026-11-25",
+    "yer": "Ogrenci Merkezi",
+    "kontenjan": 60
+  },
+  {
+    "id": 6,
+    "baslik": "Siber Guvenlik Toplulugu Bulusmasi",
+    "tur": "topluluk",
+    "tarih": "2026-11-28",
+    "yer": "Kutuphane Seminer Odasi",
+    "kontenjan": 120
+  }
+]
