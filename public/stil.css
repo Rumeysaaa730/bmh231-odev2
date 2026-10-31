@@ -160,3 +160,24 @@ footer {
   color: white;
   margin-top: 32px;
 }
+
+/* 7) Duyarli tasarim: dar ekranlar */
+@media (max-width: 700px) {
+  .ust-bant {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .arac-cubugu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtreler {
+    flex-wrap: wrap;
+  }
+
+  #arama {
+    width: 100%;
+  }
+}
