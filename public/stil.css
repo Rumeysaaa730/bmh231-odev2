@@ -86,6 +86,11 @@ main {
   color: white;
 }
 
+/* Arama yazisini kutunun yanina yaslar */
+.arac-cubugu label {
+  margin-left: auto;
+}
+
 #arama {
   padding: 8px;
   border: 1px solid var(--vurgu-renk);
@@ -144,6 +149,11 @@ main {
   cursor: pointer;
 }
 
+/* Form mesajindaki satir atlamalarini goster */
+#form-mesaj {
+  white-space: pre-line;
+}
+
 .hata {
   color: #b03a2e;
 }
@@ -177,11 +187,11 @@ footer {
     flex-wrap: wrap;
   }
 
+  .arac-cubugu label {
+    margin-left: 0;
+  }
+
   #arama {
     width: 100%;
   }
-}
-/* Form mesajindaki satir atlamalarini goster */
-#form-mesaj {
-  white-space: pre-line;
 }
