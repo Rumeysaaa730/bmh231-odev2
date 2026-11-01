@@ -17,7 +17,7 @@ function kartOlustur(etkinlik) {
   const kart = document.createElement("article");
   kart.className = "kart";
 
-  const baslik = document.createElement("h3");
+  const baslik = document.createElement("h2");
   baslik.textContent = etkinlik.baslik;
 
   const etiket = document.createElement("span");

@@ -111,11 +111,11 @@ main {
   border-top: 4px solid var(--vurgu-renk);
   box-shadow: 0 2px 6px rgba(47, 74, 51, 0.15);
 }
-
-.kart h3 {
-  margin-top: 0;
-  color: var(--ana-renk);
-}
+   .kart h2 {
+     margin-top: 0;
+     font-size: 1.2rem;
+     color: var(--ana-renk);
+   }
 
 .etiket {
   display: inline-block;
