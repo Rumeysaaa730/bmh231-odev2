@@ -54,4 +54,48 @@ function kartlariCiz(liste) {
   });
 }
 
-kartlariCiz(etkinlikler);
+// C2: Filtre ve arama
+let seciliTur = "tumu";
+let aramaMetni = "";
+
+const filtreDugmeleri = document.querySelectorAll(".filtre");
+const aramaKutusu = document.getElementById("arama");
+
+// Secili ture ve arama metnine gore listeyi suzup yeniden cizer
+function listeyiGuncelle() {
+  const sonuc = etkinlikler.filter(function (etkinlik) {
+    const turUyuyor = seciliTur === "tumu" || etkinlik.tur === seciliTur;
+    const baslik = etkinlik.baslik.toLocaleLowerCase("tr-TR");
+    const aramaUyuyor = baslik.includes(aramaMetni);
+    return turUyuyor && aramaUyuyor;
+  });
+
+  kartlariCiz(sonuc);
+
+  if (sonuc.length === 0) {
+    durumYazisi.textContent = "Aramanıza uygun etkinlik yok.";
+  } else {
+    durumYazisi.textContent = "";
+  }
+}
+
+// Filtre dugmelerine tiklama olayi
+filtreDugmeleri.forEach(function (dugme) {
+  dugme.addEventListener("click", function () {
+    filtreDugmeleri.forEach(function (d) {
+      d.classList.remove("secili");
+    });
+    dugme.classList.add("secili");
+    seciliTur = dugme.dataset.tur;
+    listeyiGuncelle();
+  });
+});
+
+// Arama kutusuna her yazildiginda calisir
+aramaKutusu.addEventListener("input", function () {
+  aramaMetni = aramaKutusu.value.trim().toLocaleLowerCase("tr-TR");
+  listeyiGuncelle();
+});
+
+// Sayfa ilk acildiginda tum etkinlikleri goster
+listeyiGuncelle();
