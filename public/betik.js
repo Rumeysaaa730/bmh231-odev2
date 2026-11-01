@@ -1,12 +1,5 @@
-// C1: Simdilik veriyi betigin icinde tanimliyoruz (D2'de API'den gelecek)
-let etkinlikler = [
-  { id: 1, baslik: "Git ve GitHub Atolyesi", tur: "atolye", tarih: "2026-11-12", yer: "Muhendislik Fakultesi Lab-2", kontenjan: 30 },
-  { id: 2, baslik: "Web Programlama Atolyesi", tur: "atolye", tarih: "2026-11-14", yer: "Muhendislik Fakultesi Lab-1", kontenjan: 25 },
-  { id: 3, baslik: "Yapay Zeka Soylesisi", tur: "soylesi", tarih: "2026-11-18", yer: "Konferans Salonu", kontenjan: 200 },
-  { id: 4, baslik: "Yazilim Kariyeri Soylesisi", tur: "soylesi", tarih: "2026-11-21", yer: "Rektorluk Konferans Salonu", kontenjan: 150 },
-  { id: 5, baslik: "Fotografcilik Toplulugu Tanisma Gunu", tur: "topluluk", tarih: "2026-11-25", yer: "Ogrenci Merkezi", kontenjan: 60 },
-  { id: 6, baslik: "Siber Guvenlik Toplulugu Bulusmasi", tur: "topluluk", tarih: "2026-11-28", yer: "Kutuphane Seminer Odasi", kontenjan: 120 }
-];
+// Veriler artik API'den gelecek (D2), bu yuzden dizi bos basliyor
+let etkinlikler = [];
 
 // Sayfadaki ogeleri seciyoruz
 const kartlarKutusu = document.getElementById("kartlar");
@@ -19,7 +12,7 @@ const turAdlari = {
   topluluk: "Topluluk"
 };
 
-// Tek bir etkinlik icin kart olusturan fonksiyon
+// C1: Tek bir etkinlik icin kart olusturan fonksiyon
 function kartOlustur(etkinlik) {
   const kart = document.createElement("article");
   kart.className = "kart";
@@ -72,6 +65,7 @@ function listeyiGuncelle() {
 
   kartlariCiz(sonuc);
 
+  durumYazisi.className = "";
   if (sonuc.length === 0) {
     durumYazisi.textContent = "Aramanıza uygun etkinlik yok.";
   } else {
@@ -97,8 +91,6 @@ aramaKutusu.addEventListener("input", function () {
   listeyiGuncelle();
 });
 
-// Sayfa ilk acildiginda tum etkinlikleri goster
-listeyiGuncelle();
 // C3: Form dogrulama
 const form = document.getElementById("oneri-formu");
 const formMesaj = document.getElementById("form-mesaj");
@@ -144,3 +136,27 @@ form.addEventListener("submit", function (olay) {
     form.reset();
   }
 });
+
+// D2: Etkinlikleri API'den fetch ile cek
+async function etkinlikleriYukle() {
+  durumYazisi.className = "";
+  durumYazisi.textContent = "Yükleniyor...";
+
+  try {
+    const yanit = await fetch("/api/etkinlikler");
+
+    if (!yanit.ok) {
+      throw new Error("Sunucu hatası: " + yanit.status);
+    }
+
+    etkinlikler = await yanit.json();
+    listeyiGuncelle(); // C1 ve C2'deki cizim kodunu kullan
+  } catch (hata) {
+    console.error("Etkinlikler yüklenemedi:", hata);
+    durumYazisi.className = "hata";
+    durumYazisi.textContent = "Etkinlikler yüklenemedi. Sunucunun çalıştığından emin olup sayfayı yenileyin.";
+  }
+}
+
+// Sayfa acildiginda verileri yukle
+etkinlikleriYukle();
