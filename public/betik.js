@@ -99,3 +99,48 @@ aramaKutusu.addEventListener("input", function () {
 
 // Sayfa ilk acildiginda tum etkinlikleri goster
 listeyiGuncelle();
+// C3: Form dogrulama
+const form = document.getElementById("oneri-formu");
+const formMesaj = document.getElementById("form-mesaj");
+
+form.addEventListener("submit", function (olay) {
+  olay.preventDefault(); // sayfanin yenilenmesini durdur
+
+  const ad = form.ad.value.trim();
+  const tarih = form.tarih.value;
+  const eposta = form.eposta.value.trim();
+  const hatalar = [];
+
+  // 1) Ad en az 5 karakter olmali
+  if (ad.length < 5) {
+    hatalar.push("Etkinlik adı en az 5 karakter olmalıdır.");
+  }
+
+  // 2) Tarih bos ya da gecmis bir gun olamaz
+  if (tarih === "") {
+    hatalar.push("Tarih boş bırakılamaz.");
+  } else {
+    const secilenTarih = new Date(tarih + "T00:00:00");
+    const bugun = new Date();
+    bugun.setHours(0, 0, 0, 0); // saati sifirla, sadece gunu karsilastir
+    if (secilenTarih < bugun) {
+      hatalar.push("Tarih geçmiş bir gün olamaz.");
+    }
+  }
+
+  // 3) E-posta gecerli bicimde olmali
+  const epostaKalibi = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!epostaKalibi.test(eposta)) {
+    hatalar.push("Geçerli bir e-posta adresi giriniz.");
+  }
+
+  // Sonucu goster
+  if (hatalar.length > 0) {
+    formMesaj.className = "hata";
+    formMesaj.textContent = hatalar.join("\n");
+  } else {
+    formMesaj.className = "basarili";
+    formMesaj.textContent = "Teşekkürler! Etkinlik öneriniz alındı.";
+    form.reset();
+  }
+});

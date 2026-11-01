@@ -181,3 +181,7 @@ footer {
     width: 100%;
   }
 }
+/* Form mesajindaki satir atlamalarini goster */
+#form-mesaj {
+  white-space: pre-line;
+}
